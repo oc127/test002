@@ -60,16 +60,39 @@
 
 ## 当前状态
 
-- [x] 工程骨架搭建
-- [x] 核心 skills: cinematic-video, ecommerce-video, camera-encyclopedia
+### Phase 1 & 1.5 (已完成，v0.2.0)
+- [x] 工程骨架 + 项目文档
 - [x] Playwright MCP 配置
-- [ ] 接入具体视频模型账号（等用户注册）
-- [ ] 批量渲染工作流实际跑通
-- [ ] 扩展到其他领域（电商运营、设计出图等）
+- [x] 5 个视频 Skills:
+  - cinematic-video（电影级，含 5 个 references）
+  - ecommerce-video（电商广告，含 3 个 references）
+  - anime-mv（4 大动漫流派）
+  - music-video（7 大音乐流派）
+  - 3d-cgi（CGI 产品动画）
+- [x] camera-encyclopedia（参考百科）
+- [x] 2 个 slash 命令：/new-skill, /generate-video, /list-skills
+- [x] 3 个 workflow 模板：higgsfield / kling / runway
+- [x] 5 个示例 prompts（prompts/_examples/）
+
+### Phase 2 (待用户有账号后)
+- [ ] 用户注册至少一个平台（推荐 Kling 或即梦）
+- [ ] 首次登录填真实选择器
+- [ ] 跑通单条渲染端到端
+- [ ] 跑通批量渲染
+
+### Phase 3 (领域扩展)
+- [ ] 小红书图文生产 skill
+- [ ] 电商详情页生成 skill
+- [ ] 数据采集 / 竞品监控 skill
 
 ## 给未来 Claude Code 会话的提示
 
 用户第一次来时可能会问"怎么用这个 repo"，引导他们：
 1. 读 `GETTING_STARTED.md` 装依赖
 2. 运行 `/doctor` 检查 MCP 是否连上
-3. 试一句："帮我用 cinematic-video skill 生成一个赛博朋克雨夜追车的 prompt"
+3. 运行 `/list-skills` 看所有可用技能
+4. 试一句："帮我用 cinematic-video skill 生成一个赛博朋克雨夜追车的 prompt"
+5. 参考 `prompts/_examples/` 里的示例理解 prompt 写法
+
+**如果用户想做视频生成但没账号**：推荐先注册**可灵（Kling）**，手机号即可，
+新用户送免费积分，中文 prompt 最好用。参考 `workflows/kling-login.md`。

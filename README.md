@@ -42,10 +42,30 @@ MCP Servers  (执行层 - Playwright 控制浏览器)
 
 ## 当前内置 Skills
 
-- **cinematic-video** — 电影级视频生成（5 段式叙事框架 + 运镜库）
-- **ecommerce-video** — 电商广告视频（2 秒钩子公式 + 产品展示模板）
-- **camera-encyclopedia** — 镜头百科（运镜术语、镜头语言、光照参数）
-- **_template** — 新建 skill 的脚手架
+### 🎬 视频生成类（5 个，可直接调用）
+
+- **cinematic-video** — 电影级视频（6 要素 + 5 段叙事 + 20 运镜 + 15 光照方案）
+- **ecommerce-video** — 电商广告视频（12 钩子公式 + 10 产品镜头模板）
+- **anime-mv** — 动漫风格（新海诚 / 宫崎骏 / 京阿尼 / 赛璐璐 4 大流派）
+- **music-video** — 音乐视频 MV（嘻哈 / 流行 / 电子 / 摇滚 / R&B / 独立 / 金属 7 大流派）
+- **3d-cgi** — 3D CGI 产品动画（Reveal / Showcase / Abstract / Simulation 4 类型）
+
+### 📖 参考类
+
+- **camera-encyclopedia** — 摄像术语百科（景别 / 焦段 / 光圈 / 快门 / 帧率 / 运镜 / 光照 / 构图）
+
+### 🛠️ 脚手架
+
+- **_template** — 新建 skill 时复制的模板
+
+### 支持的视频模型
+
+每个 skill 内置 5 个海外模型的 prompt adapter：
+- **Higgsfield Seedance 2.0** — 电影运镜专长
+- **Runway Gen-3 / Gen-4** — 工具链完整、电商首选
+- **Kling AI 1.6 / 2.0** — 国内最友好、真人动作自然
+- **Luma Dream Machine / Ray 2** — 物理模拟 + 关键帧控制
+- **OpenAI Sora** — 长 prompt 叙事最强
 
 ## 快速开始
 
