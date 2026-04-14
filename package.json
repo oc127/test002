@@ -1,0 +1,32 @@
+{
+  "name": "claude-skills-ai-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Claude Code + Playwright MCP + 领域 Skills 的工程骨架。把 Claude 从聊天助手变成专业领域自动化工作室。",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "mcp:playwright": "npx -y @playwright/mcp@latest",
+    "mcp:test": "npx -y @playwright/mcp@latest --help",
+    "doctor": "node -e \"console.log('Node:', process.version); console.log('Platform:', process.platform);\""
+  },
+  "dependencies": {
+    "@playwright/mcp": "latest"
+  },
+  "keywords": [
+    "claude-code",
+    "playwright",
+    "mcp",
+    "ai-video",
+    "skills",
+    "higgsfield",
+    "seedance",
+    "runway",
+    "kling",
+    "luma",
+    "sora"
+  ],
+  "license": "MIT"
+}
