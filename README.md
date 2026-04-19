@@ -42,7 +42,7 @@ MCP Servers  (执行层 - Playwright 控制浏览器)
 
 ## 当前内置 Skills
 
-### 🎬 视频生成类（9 个，可直接调用）
+### 🎬 视频生成类（15 个，可直接调用）
 
 - **cinematic-video** — 电影级视频（6 要素 + 5 段叙事 + 20 运镜 + 15 光照方案）
 - **ecommerce-video** — 电商广告视频（12 钩子公式 + 10 产品镜头模板）
@@ -53,6 +53,12 @@ MCP Servers  (执行层 - Playwright 控制浏览器)
 - **social-hook** — 社媒爆款钩子（0.5s 极速钩子 8 公式 + 竖屏构图 + 平台差异）
 - **cartoon** — 2D 卡通（Pixar 3D / Cartoon Network / 成人动画 / 手绘经典 4 大流派）
 - **brand-story** — 品牌叙事（创始人 / 使命 / 证言 / 幕后纪实 4 种模板）
+- **comic-to-video** — 漫画分镜→视频（Panel-by-Panel / Camera-Over-Page / Full Animation 3 模式）
+- **motion-design-ad** — SaaS/科技 Motion Design（UI Showcase / Data Flow / Feature / Brand 4 类型）
+- **product-360** — 360° 产品转台（Simple Spin / Orbit / Multi-Angle 3 模式）
+- **fashion-lookbook** — 时尚走秀 Lookbook（Runway / Editorial / Street / Catalog 4 风格）
+- **food-beverage** — 美食视频（Hero Shot / Process / Pour / Reveal / Lifestyle 5 类型）
+- **real-estate** — 房产建筑（Walkthrough / Reveal / Aerial / Lifestyle 4 类型）
 
 ### 📖 参考类 & 基础设施
 

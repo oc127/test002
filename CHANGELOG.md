@@ -10,14 +10,38 @@
 
 ---
 
-## [0.3.0] - 2026-04-19（Phase 2：对照 Notion 指南补全）
+## [0.4.0] - 2026-04-19（Phase 2 完成：15/15 Skills 全部到位）
+
+### Added
+
+**新增 6 个垂直行业 Skills**（补齐 Notion 指南完整的 15 Skills）：
+- `comic-to-video` — 漫画分镜→视频（Panel-by-Panel / Camera-Over-Page / Full Animation 3 翻译模式 + 阅读方向映射）
+- `motion-design-ad` — SaaS/科技 Motion Design（UI Showcase / Data Flow / Feature / Brand 4 类型 + 科技配色方案）
+- `product-360` — 360° 产品转台（Simple Spin / Orbit / Multi-Angle + 光照×材质矩阵）
+- `fashion-lookbook` — 时尚走秀（Runway / Editorial / Street / Lookbook + 面料视觉语言词典）
+- `food-beverage` — 美食视频（Hero Shot / Process / Pour / Reveal / Lifestyle + 食物质感词典 + 灯光暖色温原则）
+- `real-estate` — 房产建筑（Walkthrough / Reveal / Aerial / Lifestyle + 空间感营造 + 材质展示）
+
+### Changed
+
+- `CLAUDE.md` — 新增 Generation Mode / Playwright MCP Rules / Prompt Engineering / Reference Images 4 个段落 + skills 列表更新到 15 个
+- `README.md` — 更新 skills 列表到 15 个
+
+### Stats
+- 新增 6 个 skill 文件，更新 3 个项目文件
+- **总技能数：15 个视频生成 + 1 参考（camera-encyclopedia）+ 1 基础设施（content-filter） = 17**
+- Notion 指南 15 Skills 完成度：**15/15 (100%)**
+
+---
+
+## [0.3.0] - 2026-04-19（Phase 2 第一批：核心 Skills + Content Filter）
 
 ### Added
 
 **基础设施**：
 - `.claude/skills/_shared/content-filter.md` — Higgsfield 内容过滤词替换表（15 组 banned words + 语境指南 + 验证清单）
 
-**新增 4 个视频 Skills**：
+**新增 4 个高优先 Skills**：
 - `fight-scenes` — 打斗/动作编排（3 大风格：写实格斗/机甲怪兽/超能力动漫 + 编排 5 要素 + 安全词汇）
 - `social-hook` — 社媒爆款钩子（0.5s 极速钩子 8 公式 + 竖屏 9:16 构图 + TikTok/Reels/Shorts 差异）
 - `cartoon` — 2D 卡通（Pixar/Disney 3D + Cartoon Network 扁平 + 成人动画 + 手绘经典 + 迪士尼 12 原则）
@@ -28,13 +52,8 @@
 
 ### Changed
 
-- `CLAUDE.md` — 嵌入 content filter 表 + "先 Skill 再 Playwright" 两步工作流 + 更新 skills 列表到 10 个
-- `README.md` — 更新 skills 列表（5 → 9 个视频生成 + content-filter 基础设施）
-
-### Stats
-- 新增 7 个文件，更新 3 个
-- 总技能数：9 个可调用 + 1 参考（camera-encyclopedia）+ 1 基础设施（content-filter）
-- 总文件数：45+
+- `CLAUDE.md` — 嵌入 content filter 表 + "先 Skill 再 Playwright" 两步工作流 + 更新 skills 列表
+- `README.md` — 更新 skills 列表
 
 ### TODO
 - [ ] Phase 2: 用户注册视频模型账号后，填 `workflows/*-login.md` 的真实选择器

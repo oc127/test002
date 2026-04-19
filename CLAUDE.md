@@ -44,6 +44,39 @@ Higgsfield 的内容审核会拦截以下词汇（即使在完全无害的上下
 3. 设置参数（默认：Seedance 2.0, 9:16, 8s, 1 variation）
 4. 点 Generate → 等 1 分钟 → 截图确认
 
+## Generation Mode（批量生成循环）
+
+假设 Higgsfield 已登录、素材已上传。对每个 variation 执行：
+
+1. Navigate to `https://higgsfield.ai/create/video`
+2. 点击 prompt 输入框，清空，逐字输入 prompt
+3. 点 Generate
+4. 报告："Variation [X] submitted — waiting 1 minute..."
+5. 等 1 分钟
+6. 截图——如果 loading spinner 仍在转，再等 1 分钟
+7. 报告："✓ Variation [X] done — moving to next"
+8. 重复下一个 variation
+
+## Playwright MCP 规则
+
+**只用这 5 个工具**，不用 browser-use skill，不跑 Python：
+- `browser_navigate`
+- `browser_click`
+- `browser_type`
+- `browser_screenshot`
+- `browser_upload_file`
+
+如果弹出 promo modal 或 cookie banner，先关掉再操作。
+Higgsfield URL: `https://higgsfield.ai/create/video`
+
+## Prompt Engineering
+
+使用 skill 输出的完整 prompt——保留所有结构、长度、时间标记和创意方向。**不要摘要、不要缩短、不要重新格式化**。唯一允许的改动是替换 banned words。
+
+## Reference Images
+
+如果用户提供了图片路径，使用 `browser_upload_file` 上传，进入 Image-to-Video 模式。
+
 ## 架构三层
 
 ```
@@ -103,7 +136,7 @@ Higgsfield 的内容审核会拦截以下词汇（即使在完全无害的上下
 ### Phase 1 & 1.5 (已完成，v0.2.0)
 - [x] 工程骨架 + 项目文档
 - [x] Playwright MCP 配置
-- [x] 9 个视频 Skills:
+- [x] 15 个视频 Skills:
   - cinematic-video（电影级，含 5 个 references）
   - ecommerce-video（电商广告，含 3 个 references）
   - anime-mv（4 大动漫流派）
@@ -113,6 +146,12 @@ Higgsfield 的内容审核会拦截以下词汇（即使在完全无害的上下
   - social-hook（社媒爆款，0.5s 钩子 + 竖屏构图）
   - cartoon（2D 卡通，4 大西方动画流派）
   - brand-story（品牌叙事，4 种模板 + 纪录片手持）
+  - comic-to-video（漫画分镜 → 视频，3 种翻译模式）
+  - motion-design-ad（SaaS/科技 Motion Design，4 种类型）
+  - product-360（360° 产品转台，3 种模式）
+  - fashion-lookbook（时尚走秀，4 种风格 + 面料语言）
+  - food-beverage（美食视频，5 种类型 + 食物质感词典）
+  - real-estate（房产建筑，4 种类型 + 空间感技巧）
 - [x] camera-encyclopedia（参考百科）
 - [x] content-filter（Higgsfield banned words 替换表）
 - [x] 3 个 slash 命令：/new-skill, /generate-video, /list-skills
