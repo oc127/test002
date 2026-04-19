@@ -4,6 +4,46 @@
 
 当前主要领域：**AI 视频生成**（Higgsfield Seedance 2.0 等），架构本身可迁移到电商、设计、数据采集等其他领域。
 
+## ⚠️ CONTENT FILTER — 生成 Higgsfield Prompt 前必读
+
+Higgsfield 的内容审核会拦截以下词汇（即使在完全无害的上下文中）。**生成 Higgsfield prompt 前必须逐词扫描并替换**：
+
+| 禁用词 | 安全替代词 |
+|--------|----------|
+| explosion, explodes, exploding | radial particle scatter, dynamic reveal |
+| burst, bursts | radiates outward, fans out, expands |
+| smashes, crashes, slams | transitions into, resolves into |
+| snap, snaps | separates, divides, parts cleanly |
+| break, breaks, broken | separates, opens, reveals |
+| crack, cracks | opens along the edge, parts at the seam |
+| shatter, shards | separates cleanly, dissolves |
+| pull-apart, tear, rip | gentle separation, parts along the seam |
+| impact, collision | transition, shift, contact |
+| blows up, detonates | transforms, morphs, reveals |
+| crush, crushed | press, compress, flatten smoothly |
+| fire, flame, burning, ignite | warm amber glow, luminance, warm light |
+| destroy, obliterate | dissolve, transform, fade out |
+| violent, aggressive | dynamic, energetic, bold |
+| naked, bare, exposed, raw | clean, minimal, natural, uncoated |
+
+**强制规则**：替换时只改禁用词本身，不碰 prompt 其他任何内容。完整替换表和语境指南见 `.claude/skills/_shared/content-filter.md`。此规则仅对 Higgsfield 生效，Kling/Runway/Luma/Sora 保留原词。
+
+## 默认工作流
+
+**先 Skill 再 Playwright**，分两步：
+
+**Step 1 — 调用 Skill 生成 Prompt**：
+1. 根据用户需求调用对应 skill
+2. 获取完整 prompt 输出
+3. 过 content filter（替换 banned words）
+4. 展示最终 prompt 给用户确认
+
+**Step 2 — 通过 Playwright 提交**（仅在 Step 1 完成后）：
+1. 导航到 Higgsfield 创作页
+2. 把 prompt **原样逐字** 填入输入框（不删减、不合并段落、不改格式）
+3. 设置参数（默认：Seedance 2.0, 9:16, 8s, 1 variation）
+4. 点 Generate → 等 1 分钟 → 截图确认
+
 ## 架构三层
 
 ```
@@ -63,16 +103,22 @@
 ### Phase 1 & 1.5 (已完成，v0.2.0)
 - [x] 工程骨架 + 项目文档
 - [x] Playwright MCP 配置
-- [x] 5 个视频 Skills:
+- [x] 9 个视频 Skills:
   - cinematic-video（电影级，含 5 个 references）
   - ecommerce-video（电商广告，含 3 个 references）
   - anime-mv（4 大动漫流派）
   - music-video（7 大音乐流派）
   - 3d-cgi（CGI 产品动画）
+  - fight-scenes（打斗编排，3 大风格 + 安全词汇）
+  - social-hook（社媒爆款，0.5s 钩子 + 竖屏构图）
+  - cartoon（2D 卡通，4 大西方动画流派）
+  - brand-story（品牌叙事，4 种模板 + 纪录片手持）
 - [x] camera-encyclopedia（参考百科）
-- [x] 2 个 slash 命令：/new-skill, /generate-video, /list-skills
+- [x] content-filter（Higgsfield banned words 替换表）
+- [x] 3 个 slash 命令：/new-skill, /generate-video, /list-skills
 - [x] 3 个 workflow 模板：higgsfield / kling / runway
 - [x] 5 个示例 prompts（prompts/_examples/）
+- [x] TROUBLESHOOTING.md（结构化排错指南）
 
 ### Phase 2 (待用户有账号后)
 - [ ] 用户注册至少一个平台（推荐 Kling 或即梦）

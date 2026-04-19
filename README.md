@@ -42,17 +42,22 @@ MCP Servers  (执行层 - Playwright 控制浏览器)
 
 ## 当前内置 Skills
 
-### 🎬 视频生成类（5 个，可直接调用）
+### 🎬 视频生成类（9 个，可直接调用）
 
 - **cinematic-video** — 电影级视频（6 要素 + 5 段叙事 + 20 运镜 + 15 光照方案）
 - **ecommerce-video** — 电商广告视频（12 钩子公式 + 10 产品镜头模板）
 - **anime-mv** — 动漫风格（新海诚 / 宫崎骏 / 京阿尼 / 赛璐璐 4 大流派）
 - **music-video** — 音乐视频 MV（嘻哈 / 流行 / 电子 / 摇滚 / R&B / 独立 / 金属 7 大流派）
 - **3d-cgi** — 3D CGI 产品动画（Reveal / Showcase / Abstract / Simulation 4 类型）
+- **fight-scenes** — 打斗/动作编排（John Wick / Pacific Rim / 鬼灭之刃 3 大风格 + 安全词汇）
+- **social-hook** — 社媒爆款钩子（0.5s 极速钩子 8 公式 + 竖屏构图 + 平台差异）
+- **cartoon** — 2D 卡通（Pixar 3D / Cartoon Network / 成人动画 / 手绘经典 4 大流派）
+- **brand-story** — 品牌叙事（创始人 / 使命 / 证言 / 幕后纪实 4 种模板）
 
-### 📖 参考类
+### 📖 参考类 & 基础设施
 
 - **camera-encyclopedia** — 摄像术语百科（景别 / 焦段 / 光圈 / 快门 / 帧率 / 运镜 / 光照 / 构图）
+- **_shared/content-filter** — Higgsfield 内容过滤词替换表（15 组 banned words → 安全替代词）
 
 ### 🛠️ 脚手架
 

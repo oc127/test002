@@ -8,6 +8,34 @@
 
 ## [Unreleased]
 
+---
+
+## [0.3.0] - 2026-04-19（Phase 2：对照 Notion 指南补全）
+
+### Added
+
+**基础设施**：
+- `.claude/skills/_shared/content-filter.md` — Higgsfield 内容过滤词替换表（15 组 banned words + 语境指南 + 验证清单）
+
+**新增 4 个视频 Skills**：
+- `fight-scenes` — 打斗/动作编排（3 大风格：写实格斗/机甲怪兽/超能力动漫 + 编排 5 要素 + 安全词汇）
+- `social-hook` — 社媒爆款钩子（0.5s 极速钩子 8 公式 + 竖屏 9:16 构图 + TikTok/Reels/Shorts 差异）
+- `cartoon` — 2D 卡通（Pixar/Disney 3D + Cartoon Network 扁平 + 成人动画 + 手绘经典 + 迪士尼 12 原则）
+- `brand-story` — 品牌叙事（创始人/使命/证言/幕后 4 模板 + 纪录片手持语言 + 价值观视觉化）
+
+**排错指南**：
+- `TROUBLESHOOTING.md` — 覆盖 Auth conflict / MCP 连接 / Higgsfield Failed / 下载 / Skill 触发 / 视频质量 7 大类问题
+
+### Changed
+
+- `CLAUDE.md` — 嵌入 content filter 表 + "先 Skill 再 Playwright" 两步工作流 + 更新 skills 列表到 10 个
+- `README.md` — 更新 skills 列表（5 → 9 个视频生成 + content-filter 基础设施）
+
+### Stats
+- 新增 7 个文件，更新 3 个
+- 总技能数：9 个可调用 + 1 参考（camera-encyclopedia）+ 1 基础设施（content-filter）
+- 总文件数：45+
+
 ### TODO
 - [ ] Phase 2: 用户注册视频模型账号后，填 `workflows/*-login.md` 的真实选择器
 - [ ] Phase 2: 跑通单条端到端渲染验证
