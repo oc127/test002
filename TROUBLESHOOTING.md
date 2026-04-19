@@ -8,9 +8,14 @@
 |------|------|
 | Claude Code 启动报 Auth conflict | [A](#a-auth-conflict) |
 | Playwright MCP 连不上 / 0 tools | [B](#b-playwright-mcp-连接问题) |
+| VS Code 里 MCP 不可用 | [B5](#b5-vs-code-里-mcp-不可用) |
 | Higgsfield 渲染 Failed | [C](#c-higgsfield-渲染-failed) |
+| Higgsfield NSFW 警告 | [C4](#c4-内容审核误触发) |
 | Higgsfield 下载失败 | [D](#d-higgsfield-下载失败) |
 | Skill 没被自动调用 | [E](#e-skill-未被自动调用) |
+| Skills 路径不对 / 没加载 | [E5](#e5-skills-文件路径错误) |
+| Claude 自己写 prompt 不调 skill | [H](#h-claude-自己写-prompt-不调用-skill) |
+| Claude 导航到错误 URL | [I](#i-claude-导航到错误-url) |
 | 视频质量差（模糊/崩脸/畸变） | [F](#f-视频质量问题) |
 | 环境变量 / API Key 问题 | [G](#g-环境变量问题) |
 
@@ -96,6 +101,16 @@ npx playwright install chromium
 
 ### B5. Mac 权限弹窗
 首次启动 Playwright 时 macOS 可能弹 "允许控制浏览器" 权限框，注意右上角弹窗。
+
+### B5. VS Code 里 MCP 不可用
+
+**症状**：VS Code 里 Claude Code 找不到 Playwright MCP。
+
+**解决**：
+1. 确认 `.mcp.json` 存在于项目文件夹根目录
+2. **完全退出** VS Code（不是 Reload Window，是 Quit），重新打开
+3. 打开项目时会弹出 MCP 通知 → 点 **Allow**
+4. 在 Claude Code 对话里输入 `/mcp` 确认 playwright 已列出
 
 ---
 
@@ -193,6 +208,20 @@ cd ~/projects/test002 && claude
 ```
 如果显示 `/Users/xxx`（家目录），说明没在项目目录。
 
+### E5. Skills 文件路径错误
+
+某些安装器会把 skills 放到 `~/Library/Application Support/Claude/skills/`，但 Claude Code 读的是 `~/.claude/skills/`。
+
+**验证**：
+```bash
+ls ~/.claude/skills/ | head -20
+```
+
+应该能看到 `cinematic-video`, `fight-scenes` 等目录。如果没有，拷贝过来：
+```bash
+cp -r ~/Library/Application\ Support/Claude/skills/* ~/.claude/skills/
+```
+
 ---
 
 ## F. 视频质量问题
@@ -248,3 +277,51 @@ git log --all -p -- .env
 | `MCP server failed to start` | Node/npx 问题 | 见 §B |
 | `Claude Code has switched from npm to native installer` | 安装方式变更提示 | 忽略，不影响功能 |
 | `Request not allowed` | 账号权限或 Key 错误 | 检查 Key + 登录状态 |
+
+---
+
+## H. Claude 自己写 Prompt 不调用 Skill
+
+**症状**：Claude 没有调用专业 skill，而是自己凭空写了一个 prompt。
+
+**解决**：
+
+### H1. 开新会话
+Skill 有时在长对话后"忘记"。开一个新会话重试。
+
+### H2. 拆成两步（最稳）
+如果 Claude 反复不调 skill，拆成两个独立步骤：
+
+**会话 1**：只生成 prompt
+```
+/07-ecommerce-ad
+帮我生成 3 条 KitKat 广告 prompt，保存到 prompts.txt
+```
+
+**会话 2**：只提交到 Higgsfield
+```
+读取 prompts.txt 里的 prompt，逐条提交到 Higgsfield
+```
+
+### H3. 显式指定 Skill 名
+```
+用 fight-scenes skill（不是你自己写的 prompt）帮我设计一个打斗场景
+```
+
+---
+
+## I. Claude 导航到错误 URL
+
+**症状**：Claude 通过 Playwright 打开了错误的 Higgsfield 页面。
+
+**正确 URL**：
+```
+https://higgsfield.ai/create/video
+```
+
+**解决**：在 prompt 中明确指定：
+```
+导航到 https://higgsfield.ai/create/video 并提交 prompt
+```
+
+CLAUDE.md 中已配置了默认 URL，如果仍然导航错误，检查 CLAUDE.md 是否被正确加载（见 §E4）。
